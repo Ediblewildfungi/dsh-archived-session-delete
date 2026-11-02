@@ -2,6 +2,14 @@
   "name": "dsh-archived-session-delete",
   "version": "1.0.0",
   "description": "Delete archived DeepSeek Harness sessions from the sidebar \"...\" menu with an explicit second confirmation.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "session",
+    "archive",
+    "delete"
+  ],
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -26,9 +34,26 @@
     "lib/index.js",
     "lib/client.js",
     "cordis.patch.yml",
+    "screenshots.json",
+    "assets/",
     "README.md"
   ],
   "scripts": {
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "prepublishOnly": "node --test tests/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ediblewildfungi/dsh-archived-session-delete.git"
+  },
+  "homepage": "https://github.com/Ediblewildfungi/dsh-archived-session-delete#readme",
+  "bugs": {
+    "url": "https://github.com/Ediblewildfungi/dsh-archived-session-delete/issues"
+  },
+  "author": "Ediblewildfungi <jianghhui@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

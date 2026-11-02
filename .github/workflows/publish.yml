@@ -1,0 +1,33 @@
+# Release workflow: publishes to npm via Trusted Publishing (OIDC).
+#
+# No repository secret is needed. The npm trusted publisher configured at
+# https://www.npmjs.com/package/dsh-archived-session-delete/access binds this
+# exact workflow file (publish.yml) to the Ediblewildfungi/dsh-archived-session-delete
+# repository, so the `id-token: write` permission below is exchanged by the npm
+# CLI for a short-lived publish token. Provenance attestation is generated from
+# the public repository.
+#
+# Release: bump "version" in package.json, commit, then push a tag:
+#   git tag v1.0.1 && git push origin v1.0.1
+name: publish
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Use an npm CLI that supports Trusted Publishing (>= 11.5.1)
+        run: npm install -g npm@latest
+      - name: Publish with provenance
+        run: npm publish --access public --provenance

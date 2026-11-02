@@ -1,5 +1,8 @@
 # dsh-archived-session-delete
 
+[![npm version](https://img.shields.io/npm/v/dsh-archived-session-delete)](https://www.npmjs.com/package/dsh-archived-session-delete)
+[![GitHub](https://img.shields.io/badge/GitHub-Ediblewildfungi%2Fdsh--archived--session--delete-181717?logo=github)](https://github.com/Ediblewildfungi/dsh-archived-session-delete)
+
 在 DeepSeek Harness Web GUI 的侧栏里，**已归档会话**行尾的 `...` 菜单会多出一项 **删除会话**；
 点击后弹出二次确认对话框，确认后由 Host 永久删除该会话的本地记录（JSONL 会话日志、
 子代理会话、Workspace 记账、归档/置顶集合），并让所有已打开的页面立刻刷新列表。
@@ -115,6 +118,21 @@ Host 半侧接受一个可选配置项：
 
 已知遗留：派生投影缓存文件 `$DSH_HOME/storages/session_projcache/sessions/<id>.json` 不会被本插件清理
 （它是不可见的派生数据，生命周期身份不匹配时不会被读取；不影响列表与计数）。
+
+## 发布（维护者）
+
+本包已发布到 npm 并配置了 **Trusted Publishing**（绑定 GitHub Actions 的
+`.github/workflows/publish.yml`，仓库 `Ediblewildfungi/dsh-archived-session-delete`），
+发布不再需要任何长期 token：
+
+```sh
+# 1) 修改 package.json 的 version
+# 2) 提交后打 tag 并推送，GitHub Actions 用 OIDC 自动发布（含 provenance）
+git tag v1.0.1 && git push origin v1.0.1
+```
+
+首次 `1.0.0` 是人工引导发布（npm 的 Trusted Publishing 不支持包的第一个版本，
+见 [npm/cli#8544](https://github.com/npm/cli/issues/8544)）；后续版本全部走 tag + OIDC。
 
 ## 开发
 

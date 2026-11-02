@@ -1,0 +1,10 @@
+# Dependencies / build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Local logs, caches and credentials
+*.log
+.cookie
+.DS_Store
+*.tmp

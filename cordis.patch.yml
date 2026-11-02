@@ -1,0 +1,8 @@
+# dsh-archived-session-delete bundle patch.
+#
+# One insert mounts the Host half; the browser half is bound to this row because
+# the row's module name is the bare package name and package.json declares
+# `dsh.client` (platform: web) plus an `./client` export.
+- insert:
+    - id: archived-session-delete
+      name: 'dsh-archived-session-delete'

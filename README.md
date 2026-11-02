@@ -25,9 +25,15 @@
 
 ## 安装
 
-插件是一个普通的 DSH bundle 包（`dsh.bundle.patch` + `dsh.client`）。二选一：
+插件是一个普通的 DSH bundle 包（`dsh.bundle.patch` + `dsh.client`）。
 
-### A. 通过插件管理器（推荐，运行中即时生效）
+### A. 从 npm 安装（推荐）
+
+```sh
+dsh plugin --profile web add dsh-archived-session-delete
+```
+
+### B. 从本地目录 / 插件管理器安装（运行中即时生效）
 
 ```sh
 dsh plugin --profile web add link:/home/jiang/agent-talk/dsh-archived-session-delete
@@ -36,7 +42,7 @@ dsh plugin --profile web add link:/home/jiang/agent-talk/dsh-archived-session-de
 或在 Web GUI 的 **插件** 页面安装本地目录。profile 启用 HMR 时，安装后 bundle 补丁立即应用，
 浏览器端由 client-plugin HMR 自动加载，无需重启。
 
-### B. 手工写进 profile patch
+### C. 手工写进 profile patch
 
 在 `$DSH_HOME/profiles/web/cordis.patch.yml` 末尾追加：
 
@@ -46,7 +52,8 @@ dsh plugin --profile web add link:/home/jiang/agent-talk/dsh-archived-session-de
       name: 'dsh-archived-session-delete'
 ```
 
-并把包放进 profile 的 `node_modules`（`pnpm add link:...` 或复制目录）。重启 `dsh web` 后生效。
+并把包放进 profile 的 `node_modules`（`pnpm add dsh-archived-session-delete`、`pnpm add link:...`
+或复制目录）。重启 `dsh web` 后生效。
 
 ## 配置
 
